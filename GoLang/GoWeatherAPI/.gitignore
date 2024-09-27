@@ -1,0 +1,23 @@
+.env
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Output of the go coverage tool
+*.out
+
+# Compiled object files
+*.o
+*.a
+*.lo
+*.la
+
+# Go binaries
+/go/bin/
+/go/pkg/
+/bin/
+/pkg/
