@@ -14,13 +14,13 @@ var (
 	once       sync.Once
 )
 
-// GetAWSConnection returns a singleton session object
+// GetAWSConnection returns a singleton AWS session
 func GetAWSConnection() *session.Session {
 	once.Do(func() {
 		var err error
 		awsSession, err = session.NewSession(&aws.Config{Region: aws.String(config.AWS_S3_REGION)})
 		if err != nil {
-			log.Fatal(err)
+			log.Fatal("Error creating AWS session:", err)
 		}
 	})
 	return awsSession

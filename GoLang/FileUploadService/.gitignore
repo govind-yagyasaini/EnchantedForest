@@ -1,4 +1,6 @@
 .env
+*.log
+uploads/
 fileuploadservice
 
 # Binaries for programs and plugins

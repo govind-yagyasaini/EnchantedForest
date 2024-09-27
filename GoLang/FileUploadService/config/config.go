@@ -1,6 +1,11 @@
 package config
 
-const (
-	AWS_S3_REGION = "yourregion" // Define your region
-	AWS_S3_BUCKET = "yourbucket" // Define your bucket name
+import (
+	"os"
+)
+
+// Load environment variables for S3 configurations
+var (
+	AWS_S3_REGION = os.Getenv("AWS_S3_REGION")
+	AWS_S3_BUCKET = os.Getenv("AWS_S3_BUCKET")
 )
