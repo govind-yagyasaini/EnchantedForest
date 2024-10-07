@@ -36,4 +36,6 @@ func ProtectedHandler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Fprint(w, "Welcome to the protected area")
 
+	//Enter all your task CRUD operations here
+
 }
