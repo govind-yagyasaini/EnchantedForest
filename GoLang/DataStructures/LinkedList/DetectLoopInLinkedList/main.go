@@ -13,7 +13,7 @@ func main() {
 	myList.InsertAtEnd(50)
 	myList.InsertAtEnd(60)
 
-	myList.head.next.next.next.next.next = myList.head
+	myList.head.next.next.next.next.next = myList.head //Create a loop
 	myList.DetectLoop()
 	myList.DetectLoopUsingHashSet()
 
@@ -79,6 +79,81 @@ func (list *LinkedList) DetectLoopUsingHashSet() {
 
 	}
 	fmt.Println("No Loop Detected.")
+
+}
+
+// Find loop beginning
+func (list *LinkedList) FindLoopBeginning() *Node {
+
+	if list.head == nil {
+		fmt.Println("List is empty.")
+		return nil
+	}
+	slow := list.head
+	fast := list.head
+	loopExists := false
+
+	for fast != nil && fast.next != nil {
+		slow = slow.next      //move 1 position
+		fast = fast.next.next //move 2 position
+
+		if slow == fast {
+			fmt.Println("Loop Detected.")
+			loopExists = true
+			break
+		}
+
+	}
+
+	if loopExists {
+		slow = list.head
+		for slow != fast {
+			fast = fast.next
+			slow = slow.next
+		}
+		return slow
+
+	}
+	fmt.Println("No Loop detected.")
+	return nil
+
+}
+
+// Find Loop Length
+func (list *LinkedList) FindLoopLength() int {
+
+	if list.head == nil {
+		fmt.Println("List is empty.")
+		return 0
+	}
+
+	slow := list.head
+	fast := list.head
+	loopExists := false
+
+	for fast != nil && fast.next != nil {
+		slow = slow.next      //move 1 position
+		fast = fast.next.next //move 2 position
+
+		if slow == fast {
+			fmt.Println("Loop Detected.")
+			loopExists = true
+			break
+		}
+
+	}
+	counter := 1
+	if loopExists {
+		fast = fast.next //otherwise it will not enter the loop
+		for slow != fast {
+			fast = fast.next
+			counter++
+		}
+		return counter
+
+	}
+	fmt.Println("No Loop detected.")
+	return 0
 
 }
 
